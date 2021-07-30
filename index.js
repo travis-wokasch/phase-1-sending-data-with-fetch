@@ -8,17 +8,16 @@ function submitData(name, email){
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            userName: `${name}`, 
-            userEmail:`${email}`
+            name, 
+            email
         })
     })
-    .then(res => {return res.json()})
-    .then(user => (user))
+    .then(res =>  res.json())
+    .then(user => document.body.innerHTML = user["id"])
+  
 
     .catch(function(error){
         alert('Invalid user')
-        console.log(error.message)
+        document.body.innerHTML = error.message
     })
 }
-
-submitData()
